@@ -1,6 +1,6 @@
 import imgLogo from "@/assets/asset 3.png";
-import BuscadorAnime from "@/components/BuscadorAnime";
-import { NavLink } from "react-router-dom";
+import BusquedaAnime from "@/components/BusquedaAnime";
+import { NavLink, Link } from "react-router-dom";
 
 import imgProfile from "@/assets/pochita.jpeg";
 
@@ -10,36 +10,36 @@ const MainHeader = () => {
       <header className="flex  h-[120px] w-[full] items-center justify-between bg-light-blue px-4">
         <div className="mr-auto h-[100%] w-[50%] items-center bg-light-blue md:mx-auto md:flex md:h-[100%] md:w-[95%]  ">
           <div className="flex py-8 md:p-8 ">
-            <NavLink to="/">
+            <Link to="/">
               <img className="h-14 " src={imgLogo} alt="logo" />
-            </NavLink>
+            </Link>
           </div>
           <div className="">
             <div className="hidden  md:flex md:gap-8">
-              <NavLink to="/anime">
+              <Link to="/anime">
                 <button className="rounded-lg bg-slate-500 px-4 py-2 text-white">
                   Anime
                 </button>
-              </NavLink>
-              <NavLink>
+              </Link>
+              <Link>
                 <button className="rounded-lg bg-slate-500 px-4 py-2 text-white">
                   Emision
                 </button>
-              </NavLink>
-              <NavLink>
+              </Link>
+              <Link>
                 <button className="rounded-lg bg-slate-500 px-4 py-2 text-white">
                   Movies
                 </button>
-              </NavLink>
-              <NavLink>
+              </Link>
+              <Link>
                 <button className="rounded-lg bg-slate-500 px-4 py-2 text-white">
                   Finalizado
                 </button>
-              </NavLink>
+              </Link>
             </div>
           </div>
           <div className=" hidden w-[50%] items-center justify-center md:flex ">
-            <BuscadorAnime />
+            <BusquedaAnime />
           </div>
         </div>
         <button className="rounded-lg bg-slate-500 px-4 py-2 text-white hover:bg-slate-700 md:hidden">
@@ -54,13 +54,13 @@ const MainHeader = () => {
           </button>
           <div>
             <button>
-              <NavLink to="/profile">
+              <Link to="/profile">
                 <img
                   src={imgProfile}
                   alt="img"
                   className="hidden h-20 w-20 rounded-full md:flex"
                 />
-              </NavLink>
+              </Link>
             </button>
           </div>
         </div>

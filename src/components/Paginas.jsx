@@ -1,14 +1,10 @@
 import React from "react";
 
 import { useContext } from "react";
-import { ImageContext } from "@/context/ImageContext";
+import { AnimeContext } from "@/context/AnimeContext";
 
 const Paginas = () => {
-  const { paginas, setPaginas } = useContext(ImageContext);
-
-  
-
-    
+  const { paginas, setPaginas } = useContext(AnimeContext);
 
   const paginaNext = () => {
     setPaginas(paginas + 1);
