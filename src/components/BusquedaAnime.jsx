@@ -18,14 +18,33 @@ const BusquedaAnime = () => {
   };
 
   return (
-    <div>
+    <div
+      className="
+      h-full
+      w-full
+      items-center
+      justify-center
+      md:flex
+      md:justify-center
+      md:py-4
+    "
+    >
       <form onSubmit={handleSubmit}>
         <input
+          className="h-10
+        w-70 rounded-lg border-2 border-gray-300 bg-white px-5 pr-16 text-sm focus:outline-none mr-4
+        "
           type="text"
           placeholder="Buscar"
           onChange={(e) => setBusqueda(e.target.value)}
         />
-        <button type="submit" onClick={redir}>
+        <button
+          className="h-10
+        w-20 rounded-lg border-2 border-gray-300 bg-white px-5 pr-16 text-sm focus:outline-none
+          "
+          type="submit"
+          onClick={redir}
+        >
           Buscar
         </button>
       </form>

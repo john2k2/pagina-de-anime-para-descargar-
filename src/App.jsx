@@ -10,10 +10,16 @@ import { Route, Routes } from "react-router-dom";
 import PerfilPages from "./pages/PerfilPages";
 import AnimePages from "@/components/AnimePages";
 import PaginaEncontrar from "./pages/PaginaEncontrar";
+import PaginaEmision from "./pages/PaginaEmision";
+import PaginaFinish from "./pages/PaginaFinish";
+import PaginaMovies from "./pages/PaginaMovies";
+import PaginaProfile from "./pages/PaginaProfile";
+import PaginaLogin from "./pages/PaginaLogin";
+import PaginaRegistro from "./pages/PaginaRegistro";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App bg-dark-blue">
       <MainHeader />
       <Routes>
         <Route path="/" element={<HeroCaps />} />
@@ -21,6 +27,12 @@ function App() {
         <Route path="/perfil" element={<PerfilPages />} />
         <Route path="/anime" element={<AnimePages />} />
         <Route path="/busqueda" element={<PaginaEncontrar />} />
+        <Route path="/emision" element={<PaginaEmision />} />
+        <Route path="/finalizado" element={<PaginaFinish />} />
+        <Route path="/movies" element={<PaginaMovies />} />
+        <Route path="/profile" element={<PaginaProfile />} />
+        <Route path="/login" element={<PaginaLogin />} />
+        <Route path="/registro" element={<PaginaRegistro />} />
       </Routes>
     </div>
   );
