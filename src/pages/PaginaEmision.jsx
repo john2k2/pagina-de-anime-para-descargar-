@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const PaginaEmision = () => {
-  return (
-    <div>
-      <h1>Emision</h1>
-    </div>
-  )
-}
+  return <div></div>;
+};
 
-export default PaginaEmision
+export default PaginaEmision;

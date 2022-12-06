@@ -1,51 +1,35 @@
 import React from "react";
-import { useState } from "react";
-import { AnimeContext } from "@/context/AnimeContext";
+import { SearchContext } from "@/context/SearchContext";
 import { useContext } from "react";
 
 const BusquedaAnime = () => {
-  const { search, setSearch } = useContext(AnimeContext);
+  const { searchAnime, searchAnimeUrl, setSearch, search } =
+    useContext(SearchContext);
 
-  const [busqueda, setBusqueda] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSearch(busqueda);
+  const redir = () => {
+    window.location.href = `/encontrar/${search} `;
   };
 
-  let redir = () => {
-    window.location.href = `/busqueda/${busqueda}`;
+  const ingresarAnime = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const guardarAnime = (e) => {
+    e.preventDefault();
+    redir();
   };
 
   return (
-    <div
-      className="
-      h-full
-      w-full
-      items-center
-      justify-center
-      md:flex
-      md:justify-center
-      md:py-4
-    "
-    >
-      <form onSubmit={handleSubmit}>
+    <div>
+      <form>
         <input
-          className="h-10
-        w-70 rounded-lg border-2 border-gray-300 bg-white px-5 pr-16 text-sm focus:outline-none mr-4
-        "
           type="text"
-          placeholder="Buscar"
-          onChange={(e) => setBusqueda(e.target.value)}
-        />
-        <button
-          className="h-10
-        w-20 rounded-lg border-2 border-gray-300 bg-white px-5 pr-16 text-sm focus:outline-none
-          "
-          type="submit"
-          onClick={redir}
-        >
-          Buscar
+          placeholder="Buscar anime"
+          onChange={ingresarAnime}
+          value={search}
+        ></input>
+        <button onClick={guardarAnime} className="text-white">
+          buscar
         </button>
       </form>
     </div>
