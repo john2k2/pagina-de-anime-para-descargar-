@@ -13,7 +13,7 @@ const NavBarHeader = () => {
   return (
     <div
       className="
-    top-25 absolute left-0
+    top-25 absolute left-0 z-10
     flex h-[100vh]
     w-[100%] flex-col items-center 
     justify-start gap-4
