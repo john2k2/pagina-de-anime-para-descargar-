@@ -13,18 +13,32 @@ const NavBarHeader = () => {
   return (
     <div
       className="
-    top-25 absolute left-0 z-10
+    top-28 absolute left-0 z-10
     flex h-[100vh]
     w-[100%] flex-col items-center 
     justify-start gap-4
+    font-bold text-base
     bg-light-blue
     pt-20
-    md:static md:flex md:h-[100%]
-    md:w-[100%] md:flex-row
+    md:h-[100%]
+    md:w-[100%] 
     md:items-center
     md:justify-center
     md:gap-4
     md:pt-0
+
+    lg:h-0
+    lg:w-[100%]
+    lg:flex-row
+    lg:static
+    
+    lg:items-center
+    lg:justify-center
+    lg:gap-4
+    lg:pt-0
+    
+
+    
     "
     >
       <Link to="/anime">

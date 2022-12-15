@@ -13,18 +13,18 @@ const PaginaMovies = () => {
       const result = await axios.get(url);
       const $ = cheerio.load(result.data);
 
-      $(".animeimgdiv").each((i, el) => {
+      $(".animes").each((i, el) => {
         const card = $(el).html();
         const alt = $(el).find("img").attr("alt");
         const cap = $(el).find("p").text();
-        const button = $(el).find("button").text();
+        const status = $(el).find("button").text();
         const img = $(el).find("img").attr("data-src");
-        const status = $(el).find("img").attr("data-status");
+        const img2 = $(el).find("img").attr("src");
         const title = $(el).find(".animetitles").text();
 
         setData((data) => [
           ...data,
-          { card, alt, cap, button, title, img, status },
+          { card, alt, cap, status, title, img, img2 },
         ]);
       });
     };
@@ -32,27 +32,37 @@ const PaginaMovies = () => {
   }, []);
 
   return (
-    <div>
-      <div className="mx-auto w-[80vw] ">
-        <div className="flex flex-wrap gap-8">
-          {data.map((card) => (
-            <div
-              className="relative mx-auto max-w-[200px] transition-all duration-300 ease-in-out hover:scale-[1.05] "
-              key={card.id}
-            >
-              <img
-                className=" w-full rounded-md  object-cover shadow-md "
-                src={card.img}
-                alt={card.alt}
-              />
-              <h3 className="w-full text-center text-white">{card.title}</h3>
-              <p className=" absolute top-4 right-4 text-white">{card.cap}</p>
-              <button className="absolute bottom-[4.5rem] left-4 text-white ">
-                {card.button}
+    <div className="mx-auto w-[95vw]">
+      <div>
+        <h1 className="py-4 text-center text-4xl font-bold text-white">
+          Ultimos Animes
+        </h1>
+      </div>
+      <div className="flex flex-wrap justify-center gap-8 py-8 ">
+        {data.map((card) => (
+          <div
+            key={card.alt}
+            className="group relative   h-[200px] max-w-[45%]  pb-12 transition  duration-500 ease-in-out hover:scale-105
+             md:h-[300px] md:w-[400px] md:pb-0 "
+          >
+            <img
+              className="  h-[90%] w-full rounded-md   object-cover shadow-md "
+              src={card.img}
+              alt={card.alt}
+            />
+            <div>
+              <p className="bg-black/50 absolute top-3 right-3 rounded-md py-[4px] px-[13px] text-white md:text-xl  ">
+                {card.cap}
+              </p>
+              <button className="absolute bottom-24 left-3 text-xl font-bold text-white md:bottom-16 ">
+                {card.status}
               </button>
+              <h3 className=" flex items-center justify-center pt-4 text-center text-white group-hover:text-primary-orange ">
+                {card.title}
+              </h3>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -20,17 +20,15 @@ const BusquedaAnime = () => {
   };
 
   return (
-    <div>
+    <div className="flex w-full  justify-center lg:justify-end lg:text-right  ">
       <form>
         <input
+          className="lg:w-92  h-10 w-52 rounded-lg border-2 border-solid  border-orange-600  px-3 py-2   text-white  "
           type="text"
           placeholder="Buscar anime"
           onChange={ingresarAnime}
           value={search}
         ></input>
-        <button onClick={guardarAnime} className="text-white">
-          buscar
-        </button>
       </form>
     </div>
   );

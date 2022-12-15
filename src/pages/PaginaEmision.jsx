@@ -12,9 +12,7 @@ const PaginaEmision = () => {
 
       // Aquí puedes usar cheerio para analizar y manipular el HTML de la página web
       // y extraer los datos que necesitas
-      const data = $(
-        "body > section:nth-child(4) > div > div > div.row.row-cols-5"
-      ).html(); // <--- Aquí extraigo el HTML de la clase animeimgdiv
+      const data = $(".animes").html(); // <--- Aquí extraigo el HTML de la clase animeimgdiv
 
       const img = $(".animeimgdiv").find("img").attr("data-src"); // <--- Aquí extraigo el src de la imagen
 
@@ -30,7 +28,13 @@ const PaginaEmision = () => {
         "body > section:nth-child(4) > div > div > div.row.row-cols-5 > div:nth-child(2) > a > div > div > div > div > button"
       ).text(); // <--- Aquí extraigo el texto del botón "Ver más
 
-      setData({ data, img, title, cap, status, button });
+      const nombreAnime = $(
+        "body > section:nth-child(4) > div > div > div.row.row-cols-5 > div:nth-child(2) > a > div > h2"
+      ).text(); // <--- Aquí extraigo el texto del botón title
+
+      setData([...data, { img, title, status, cap, button, nombreAnime }]);
+
+      console.log(data);
     };
 
     fetchData();
@@ -38,17 +42,22 @@ const PaginaEmision = () => {
 
   return (
     <div>
-      <h1 className="text-white">Encontrar</h1>
-      <h2 className="text-white">{data.title}</h2>
-      <div>
-        <div>
-          <img src={data.img} alt={data.title} />
-          <h3 className="text-white">{data.title}</h3>
-          <p className="text-white">{data.cap}</p>
-          <button className="text-white ">{data.button}</button>
+      {data.map((card) => (
+        <div
+          className="relative mx-auto max-w-[200px] transition-all duration-300 ease-in-out hover:scale-[1.05]"
+          key={card.id}
+        >
+          <img
+            className=" w-full rounded-md  object-cover shadow-md "
+            src={card.img}
+            alt={card.title}
+          />
+          <p className=" absolute top-4 right-4 text-white">{card.cap}</p>
+          <h3 className="text-white">{card.nombreAnime}</h3>
         </div>
-      </div>
+      ))}
     </div>
   );
 };
+
 export default PaginaEmision;
