@@ -4,7 +4,6 @@ import cheerio from "cheerio";
 
 const PaginaMovies = () => {
   const [data, setData] = useState([]);
-  const [img, setImg] = useState([]);
 
   const url = "https://monoschinos2.com";
 
@@ -31,6 +30,8 @@ const PaginaMovies = () => {
     getdata();
   }, []);
 
+  console.log(data);
+
   return (
     <div className="mx-auto w-[95vw]">
       <div>
@@ -51,7 +52,7 @@ const PaginaMovies = () => {
               alt={card.alt}
             />
             <div>
-              <p className="bg-black/50 absolute top-3 right-3 rounded-md py-[4px] px-[13px] text-white md:text-xl  ">
+              <p className="absolute top-3 right-3 rounded-md bg-black/50 py-[4px] px-[13px] text-white md:text-xl  ">
                 {card.cap}
               </p>
               <button className="absolute bottom-24 left-3 text-xl font-bold text-white md:bottom-16 ">

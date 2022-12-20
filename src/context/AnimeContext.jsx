@@ -18,6 +18,7 @@ const AnimeProvider = ({ children }) => {
     getPersonajes();
   }, [paginas]);
 
+
   return (
     <AnimeContext.Provider
       value={{

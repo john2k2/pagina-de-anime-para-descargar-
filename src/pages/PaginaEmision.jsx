@@ -33,8 +33,6 @@ const PaginaEmision = () => {
       ).text(); // <--- Aquí extraigo el texto del botón title
 
       setData([...data, { img, title, status, cap, button, nombreAnime }]);
-
-      console.log(data);
     };
 
     fetchData();
