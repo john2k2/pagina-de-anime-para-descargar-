@@ -4,8 +4,17 @@ import cheerios from "cheerio";
 
 const HeroCaps = () => {
   const [recientes, setRecientes] = useState([]);
-  const [start, setStart] = useState(0);
-  const [end, setEnd] = useState(4);
+  const [start, setStart] = useState("");
+  const [end, setEnd] = useState("");
+
+  const [isMobile, setIsMobile] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const getRecientes = async () => {
@@ -31,22 +40,41 @@ const HeroCaps = () => {
     getRecientes();
   }, []);
 
-  const siguiente = () => {
-    if (end < 10) {
-      setStart(start + 1);
-      setEnd(end + 1);
-    } else if (end === 10) {
+  const cambioResolucion = () => {
+    if (width <= 767) {
+      setIsMobile(true);
+      setStart(0);
+      setEnd(1);
+    } else if (width < 1024) {
+      setIsMobile(false);
+      setStart(0);
+      setEnd(2);
+    } else if (width < 1440) {
+      setIsMobile(false);
       setStart(0);
       setEnd(4);
+    } else {
+      setIsMobile(false);
+      setStart(0);
+      setEnd(5);
     }
   };
+
+  useEffect(() => {
+    cambioResolucion();
+  }, [width]);
+
+  const siguiente = () => {
+    if (end < recientes.length) {
+      setStart(start + 1);
+      setEnd(end + 1);
+    }
+  };
+
   const anterior = () => {
     if (start > 0) {
       setStart(start - 1);
       setEnd(end - 1);
-    } else if (start === 0) {
-      setStart(6);
-      setEnd(10);
     }
   };
 
@@ -55,60 +83,46 @@ const HeroCaps = () => {
       <div>
         <h1
           className="
-        mb-8 bg-gradient-to-r from-blue-500 to-blue-700 py-4 text-center  text-4xl font-bold text-white "
+         bg-gradient-to-r from-blue-500 to-blue-700 py-4 text-center  text-4xl font-bold text-white "
         >
           Ultimos Animes
         </h1>
       </div>
-      <div className=" mx-auto flex items-center justify-center md:w-[70%] lg:w-[75%]  ">
+      <div className="mx-auto flex h-52 w-[95%] items-center justify-center ">
         <button
-          className="mx-4 rounded-l-md bg-slate-500 px-4 py-2
-          text-white hover:bg-slate-700"
+          className="rounded-lg bg-slate-300 py-2 px-2 text-4xl font-bold text-black  "
           onClick={() => {
             anterior();
           }}
         >
           >
         </button>
-        <div className=" flex w-full justify-center ">
-          {recientes.slice(start, end).map((anime) => (
-            <div
-              key={anime.title}
-              className="hover:scale-104 transition-duration-500 transition-timing-ease-in-out group  relative  h-[100%] w-[400px]
-              cursor-pointer px-4 pb-12  hover:z-50 
-              "
-            >
+        <div className=" flex gap-4  ">
+          {recientes.slice(start, end).map((reciente) => (
+            <div className="relative mx-4" key={reciente.title}>
               <img
-                src={anime.img}
-                alt={anime.title}
-                className="h-[200px]  w-[400px] transform rounded-md object-cover
-                  shadow-md transition
-                  duration-500 ease-in-out  group-hover:scale-105 
-                  "
+                className="h-auto w-full rounded-lg object-contain shadow-lg md:w-72"
+                src={reciente.img}
+                alt={reciente.title}
               />
               <span
-                className="
-              absolute inset-0 mx-auto h-[207px] w-[97%] items-end justify-center  overflow-hidden bg-gradient-to-t from-black  to-transparent opacity-0   transition duration-500 ease-in-out group-hover:opacity-90
-              "
+                className=" absolute
+                bottom-0 left-0 h-full w-full bg-gradient-to-b  from-transparent to-black/20 rounded-md
+                "
               ></span>
-
-              <div className="absolute inset-0 mx-auto flex h-[75%] w-[85%] items-end justify-center">
-                <div className="text-center">
-                  <h2 className="min-text-5xl font-semibold text-white group-hover:text-primary-orange ">
-                    {anime.nombreAnime}
-                  </h2>
-                  <p className=" text-sm font-medium text-white group-hover:text-primary-orange">
-                    {anime.button}
-                  </p>
-                </div>
+              <div className=" absolute bottom-0  flex w-full flex-col items-center justify-center text-center ">
+                <h1 className="max-text-xl w-[90%] text-center font-bold text-primary-orange  ">
+                  {reciente.nombreAnime}
+                </h1>
+                <h1 className="text-center text-lg font-bold text-white">
+                  {reciente.button}
+                </h1>
               </div>
             </div>
           ))}
         </div>
         <button
-          className="mx-4 rounded-r-md bg-slate-500 px-4 py-2
-          text-white  duration-700 ease-in-out hover:bg-slate-700  
-        "
+          className="rounded-lg bg-slate-300 py-2 px-2 text-4xl font-bold text-black  "
           onClick={() => {
             siguiente();
           }}

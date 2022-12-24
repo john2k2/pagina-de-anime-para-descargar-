@@ -13,13 +13,13 @@ const NavBarHeader = () => {
   return (
     <div
       className="
-    top-28 absolute left-0 z-10
+    absolute top-28 left-0 z-10
     flex h-[100vh]
     w-[100%] flex-col items-center 
     justify-start gap-4
-    font-bold text-base
-    bg-light-blue
-    pt-20
+    bg-light-blue pt-20
+    text-base
+    font-bold
     md:h-[100%]
     md:w-[100%] 
     md:items-center
@@ -27,15 +27,14 @@ const NavBarHeader = () => {
     md:gap-4
     md:pt-0
 
-    lg:h-0
-    lg:w-[100%]
-    lg:flex-row
-    lg:static
     
-    lg:items-center
-    lg:justify-center
+    lg:static
+    lg:flex-row
+    lg:justify-start
     lg:gap-4
     lg:pt-0
+    
+    
     
 
     

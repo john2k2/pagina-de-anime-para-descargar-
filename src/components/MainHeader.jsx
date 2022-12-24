@@ -15,12 +15,12 @@ const MainHeader = () => {
 
   return (
     <>
-      <header className=" mx-auto flex h-[110px]   items-center bg-light-blue px-4">
-        <div className="mx-auto flex w-[100%] justify-between  md:mx-auto md:flex md:w-[80%] md:items-center ">
-          <div className="flex items-center ">
+      <header className=" mx-auto flex h-[110px] items-center bg-light-blue px-4">
+        <div className="mx-auto flex w-full justify-between px-8 md:mx-auto md:flex lg:w-[90%] items-center lg:px-0   ">
+          <div className=" w-[30%] md:max-w-[7%] ">
             <Link to="/">
               <img
-                className="w-30 md:h-auto md:w-[200px] "
+                className=" h-[100%] w-full object-contain "
                 src={imgLogo}
                 alt="logo"
               />
@@ -33,38 +33,38 @@ const MainHeader = () => {
           >
             <NavBarHeader />
           </div>
-          <div className=" hidden items-center md:hidden  lg:flex lg:w-[100%]  ">
+          <div className=" hidden items-center md:hidden  lg:flex lg:w-[45%]  ">
             <BusquedaAnime />
           </div>
           <button
             onClick={handleShow}
-            className="rounded-lg bg-slate-500 px-4 py-2 capitalize text-white hover:bg-slate-700 md:flex lg:hidden "
+            className="rounded-lg bg-slate-500 px-4 py-2 capitalize text-white hover:bg-slate-700 md:flex lg:hidden"
           >
             menu
           </button>
-        <div className="hidden h-[100%] w-[30%] items-center justify-center gap-8  md:hidden lg:flex   ">
-          <Link to="/login">
-            <button className="rounded-lg bg-slate-500 px-4 py-2 text-white hover:bg-slate-700">
-              Login
-            </button>
-          </Link>
-          <Link to="/registro">
-            <button className="rounded-lg bg-slate-500 px-4 py-2 text-white hover:bg-slate-700">
-              Register
-            </button>
-          </Link>
-          <div>
-            <button>
-              <Link to="/profile">
-                <img
-                  src={imgProfile}
-                  alt="img"
-                  className="hidden h-20 w-20 rounded-full md:flex"
-                />
-              </Link>
-            </button>
+          <div className="hidden h-[100%] w-[50%] items-center justify-center  gap-4 md:hidden lg:flex   ">
+            <Link to="/login">
+              <button className="rounded-lg bg-slate-500 px-4 py-2 text-white hover:bg-slate-700 md:max-w-[100px] ">
+                Login
+              </button>
+            </Link>
+            <Link to="/registro">
+              <button className="rounded-lg bg-slate-500 px-4 py-2 text-white hover:bg-slate-700">
+                Register
+              </button>
+            </Link>
+            <div>
+              <button>
+                <Link to="/profile">
+                  <img
+                    src={imgProfile}
+                    alt="img"
+                    className="hidden h-20 w-20 rounded-full md:flex"
+                  />
+                </Link>
+              </button>
+            </div>
           </div>
-        </div>
         </div>
       </header>
     </>
